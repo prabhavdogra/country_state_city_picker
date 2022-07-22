@@ -81,6 +81,9 @@ class SelectState extends StatefulWidget {
   final ValueChanged<String> onCountryChanged;
   final ValueChanged<String> onStateChanged;
   final ValueChanged<String> onCityChanged;
+  final String? preselectedCountry;
+  final String? preselectedState;
+  final String? preselectedCity;
   final VoidCallback? onCountryTap;
   final VoidCallback? onStateTap;
   final VoidCallback? onCityTap;
@@ -91,6 +94,9 @@ class SelectState extends StatefulWidget {
 
   const SelectState(
       {Key? key,
+      required this.preselectedCountry,
+      required this.preselectedState,
+      required this.preselectedCity,
       required this.onCountryChanged,
       required this.onStateChanged,
       required this.onCityChanged,
@@ -109,12 +115,12 @@ class SelectState extends StatefulWidget {
 }
 
 class _SelectStateState extends State<SelectState> {
-  List<String> _cities = ["Choose City"];
   List<String> _country = ["Choose Country"];
-  String _selectedCity = "Choose City";
+  List<String> _states = ["Choose State/Province"];
+  List<String> _cities = ["Choose City"];
   String _selectedCountry = "Choose Country";
   String _selectedState = "Choose State/Province";
-  List<String> _states = ["Choose State/Province"];
+  String _selectedCity = "Choose City";
   var responses;
 
   @override
@@ -231,7 +237,7 @@ class _SelectStateState extends State<SelectState> {
         EditProfileDropdown(
           label: 'Country',
           enabled: false,
-          initialValue: "Choose Country",
+          initialValue: widget.preselectedCountry ?? "Choose Country",
           child: DropdownButton<String>(
             underline: Container(),
             dropdownColor: widget.dropdownColor,
@@ -264,7 +270,7 @@ class _SelectStateState extends State<SelectState> {
         EditProfileDropdown(
           label: 'State',
           enabled: false,
-          initialValue: "Choose State",
+          initialValue: widget.preselectedState ?? "Choose State/Province",
           child: DropdownButton<String>(
             underline: Container(),
             dropdownColor: widget.dropdownColor,
@@ -288,7 +294,7 @@ class _SelectStateState extends State<SelectState> {
         EditProfileDropdown(
           label: 'City',
           enabled: false,
-          initialValue: "Choose City",
+          initialValue: widget.preselectedCity ?? "Choose City",
           child: DropdownButton<String>(
             underline: Container(),
             dropdownColor: widget.dropdownColor,
