@@ -259,7 +259,7 @@ class _SelectStateState extends State<SelectState> {
           ),
         ),
         const SizedBox(
-          height: 4,
+          height: 20,
         ),
         EditProfileDropdown(
           label: 'State',
@@ -283,7 +283,7 @@ class _SelectStateState extends State<SelectState> {
           ),
         ),
         const SizedBox(
-          height: 10.0,
+          height: 20,
         ),
         EditProfileDropdown(
           label: 'City',
