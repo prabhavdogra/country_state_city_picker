@@ -228,95 +228,83 @@ class _SelectStateState extends State<SelectState> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        InputDecorator(
-          decoration: widget.decoration,
-          child: EditProfileDropdown(
-              label: "Couantry",
-              child: DropdownButton<String>(
-                dropdownColor: widget.dropdownColor,
-                isExpanded: true,
-                items: _country.map((String dropDownStringItem) {
-                  return DropdownMenuItem<String>(
-                    value: dropDownStringItem,
-                    child: Row(
-                      children: [
-                        Flexible(
-                          child: Text(
-                            dropDownStringItem,
-                            style: widget.style,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                }).toList(),
-                // onTap: ,
-                onChanged: (value) => _onSelectedCountry(value!),
-                onTap: widget.onCountryTap,
-                // onChanged: (value) => _onSelectedCountry(value!),
-                value: _selectedCountry,
-              )),
+        EditProfileDropdown(
+          label: 'Country',
+          enabled: false,
+          initialValue: "Choose Country",
+          child: DropdownButton<String>(
+            underline: Container(),
+            dropdownColor: widget.dropdownColor,
+            isExpanded: true,
+            items: _country.map(
+              (String dropDownStringItem) {
+                return DropdownMenuItem<String>(
+                  value: dropDownStringItem,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          dropDownStringItem,
+                          style: widget.style,
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            ).toList(),
+            onChanged: (value) => _onSelectedCountry(value!),
+            value: _selectedCountry,
+          ),
         ),
-        SizedBox(
-          height: widget.spacing,
+        const SizedBox(
+          height: 4,
         ),
-        InputDecorator(
-          decoration: widget.decoration,
-          child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
+        EditProfileDropdown(
+          label: 'State',
+          enabled: false,
+          initialValue: "Choose State",
+          child: DropdownButton<String>(
+            underline: Container(),
             dropdownColor: widget.dropdownColor,
             isExpanded: true,
             items: _states.map((String dropDownStringItem) {
               return DropdownMenuItem<String>(
                 value: dropDownStringItem,
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        dropDownStringItem,
-                        style: widget.style,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    )
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(dropDownStringItem, style: widget.style),
                 ),
               );
             }).toList(),
             onChanged: (value) => _onSelectedState(value!),
-            onTap: widget.onStateTap,
             value: _selectedState,
-          )),
+          ),
         ),
-        SizedBox(
-          height: widget.spacing,
+        const SizedBox(
+          height: 10.0,
         ),
-        InputDecorator(
-          decoration: widget.decoration,
-          child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
+        EditProfileDropdown(
+          label: 'City',
+          enabled: false,
+          initialValue: "Choose City",
+          child: DropdownButton<String>(
+            underline: Container(),
             dropdownColor: widget.dropdownColor,
             isExpanded: true,
             items: _cities.map((String dropDownStringItem) {
               return DropdownMenuItem<String>(
                 value: dropDownStringItem,
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        dropDownStringItem,
-                        style: widget.style,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    )
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(dropDownStringItem, style: widget.style),
                 ),
               );
             }).toList(),
             onChanged: (value) => _onSelectedCity(value!),
-            onTap: widget.onCityTap,
             value: _selectedCity,
-          )),
+          ),
         ),
       ],
     );
