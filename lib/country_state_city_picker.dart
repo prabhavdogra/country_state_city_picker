@@ -10,7 +10,6 @@ import 'model/select_status_model.dart' as StatusModel;
 class EditProfileDropdown extends StatelessWidget {
   final String label;
   final Widget? suffixIcon;
-  final String? initialValue;
   final bool? readOnly;
   final bool? enabled;
   final VoidCallback? onTap;
@@ -20,7 +19,6 @@ class EditProfileDropdown extends StatelessWidget {
   const EditProfileDropdown({
     Key? key,
     required this.label,
-    this.initialValue,
     this.readOnly,
     this.enabled,
     this.onTap,
@@ -237,7 +235,6 @@ class _SelectStateState extends State<SelectState> {
         EditProfileDropdown(
           label: 'Country',
           enabled: false,
-          initialValue: widget.preselectedCountry ?? "Choose Country",
           child: DropdownButton<String>(
             underline: Container(),
             dropdownColor: widget.dropdownColor,
@@ -261,7 +258,7 @@ class _SelectStateState extends State<SelectState> {
               },
             ).toList(),
             onChanged: (value) => _onSelectedCountry(value!),
-            value: _selectedCountry,
+            value: widget.preselectedCountry ?? "Choose Country",
           ),
         ),
         const SizedBox(
@@ -270,7 +267,6 @@ class _SelectStateState extends State<SelectState> {
         EditProfileDropdown(
           label: 'State',
           enabled: false,
-          initialValue: widget.preselectedState ?? "Choose State/Province",
           child: DropdownButton<String>(
             underline: Container(),
             dropdownColor: widget.dropdownColor,
@@ -285,7 +281,7 @@ class _SelectStateState extends State<SelectState> {
               );
             }).toList(),
             onChanged: (value) => _onSelectedState(value!),
-            value: _selectedState,
+            value: widget.preselectedState ?? "Choose State/Province",
           ),
         ),
         const SizedBox(
@@ -294,7 +290,6 @@ class _SelectStateState extends State<SelectState> {
         EditProfileDropdown(
           label: 'City',
           enabled: false,
-          initialValue: widget.preselectedCity ?? "Choose City",
           child: DropdownButton<String>(
             underline: Container(),
             dropdownColor: widget.dropdownColor,
@@ -309,7 +304,7 @@ class _SelectStateState extends State<SelectState> {
               );
             }).toList(),
             onChanged: (value) => _onSelectedCity(value!),
-            value: _selectedCity,
+            value: widget.preselectedCity ?? "Choose City",
           ),
         ),
       ],
