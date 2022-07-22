@@ -231,7 +231,7 @@ class _SelectStateState extends State<SelectState> {
         InputDecorator(
           decoration: widget.decoration,
           child: EditProfileDropdown(
-              label: "Country",
+              label: "Couantry",
               child: DropdownButton<String>(
                 dropdownColor: widget.dropdownColor,
                 isExpanded: true,
